@@ -8,9 +8,18 @@ from libraryapp.models import BookAndAuthor
 from libraryapp.models import BookAndCategory
 from libraryapp.models import BookAndUser
 
-admin.site.register(Book)
-admin.site.register(Author)
-admin.site.register(Category)
+class BookAdmin(admin.ModelAdmin):
+   list_display = ['name', 'id']
+
+class AuthorAdmin(admin.ModelAdmin):
+   list_display = ['name', 'id']
+
+class CategoryAdmin(admin.ModelAdmin):
+   list_display = ['name', 'id']   
+
+admin.site.register(Book, BookAdmin)
+admin.site.register(Author, AuthorAdmin)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Language)
 admin.site.register(User)
 admin.site.register(BookAndAuthor)
