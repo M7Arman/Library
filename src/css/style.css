@@ -46,6 +46,7 @@ nav {
 	display: block;
 	padding-left: 50px;
 	padding-top: 70px;
+	width: 350px;
 }
 
 nav ul li {
@@ -60,6 +61,27 @@ nav ul li {
 	background-color: #E3E3E3;
 	color: black;
 }
+
+#login {
+	width: 165px;
+	display: block;
+	height: 80px;
+	margin-left: 45%;
+	margin-top: -9%;
+	background-color: rgba(99, 151, 167, 0.39);
+}
+
+#login span {
+	margin-top: 32px;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+#login img {
+	margin-top: 10px;
+	position: absolute;
+}
+
 aside {
 	display: block;
 	float: left;

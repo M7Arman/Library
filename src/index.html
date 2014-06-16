@@ -5,6 +5,7 @@
 	<title>Library!</title>
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
 	<script src="js/menu.js"></script>
 </head>
 
@@ -17,11 +18,15 @@
 		</div>
 		<nav>
 			<ul ng-controller="menuCtrl">
-				<li class="menu-{{menuList.home}}" ng-click="homeClick()"><a>Home</a></li>
-				<li class="menu-{{menuList.contact}}" ng-click="contactClick()"><a>Contact</a></li>
+				<li class="menu-{{menuList.home}}" ng-click="homeClick()">Home</li>
+				<li class="menu-{{menuList.contact}}" ng-click="contactClick()">Contact</li>
 				<li class="menu-{{menuList.aboutAs}}" ng-click="aboutAsClick()"><a>About us</a></li>
 			</ul>
 		</nav>
+		<div id="login">
+			<span>Login/Sign up</span>
+			<img src="images/user.png">
+		</div>
 	</header>
 
 	<aside>
@@ -33,7 +38,7 @@
 		</section>
 		
 		<section id="signin">
-			<h2>Sign In</h2>
+			<a ng-click="subPage='#/contact.html'">Sign In</a>
 		</section>
 		
 		<section id="category">
@@ -46,6 +51,8 @@
 	<article>
 		<section id="news">
 			<h2>News</h2>
+			<ng-include src="subPage">
+			Hey</ng-include>
 		</section>
 	</article>
 	<footer><h3>footer</h3></footer>
