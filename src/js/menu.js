@@ -1,4 +1,4 @@
-//angular.module("myApp",[])
+
 function menuCtrl($scope) {
 
  $scope.lastClick = "contact";
@@ -10,7 +10,6 @@ function menuCtrl($scope) {
 
 	$scope.homeClick = function() {
 		$scope.clearTrue();
-		$scope.menuList.$scope.lastClick = false;
 		$scope.menuList.home = true;
 	};
 
@@ -25,7 +24,8 @@ function menuCtrl($scope) {
 	};
 
 	$scope.clearTrue = function() {
-		angular.forEach( $scope.menuList, name)
-	}
-
+		$scope.menuList.home = false;
+		$scope.menuList.contact = false;
+		$scope.menuList.aboutAs = false;
+	};
 }

@@ -1,0 +1,2 @@
+for registory
+https://docs.angularjs.org/guide/forms

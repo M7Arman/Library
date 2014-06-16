@@ -44,27 +44,21 @@ header {
 
 nav {
 	display: block;
-	float: left;
 	padding-left: 50px;
 	padding-top: 70px;
 }
 
-nav ul {
-	display: inline;
-	margin: 0;
-	padding: 15px 4px 17px 0;
-	list-style: none;
-}
-
-nav ul li {display: inline-block;
-margin-right: -4px;
-position: relative;
-padding: 15px 20px;
-cursor: pointer;
+nav ul li {
+	display: inline-block;
+	position: relative;
+	color: #53dbd9;
+	padding: 8px 20px;
+	cursor: pointer;
 }
 
 .menu-true {
-	background-color: white;
+	background-color: #E3E3E3;
+	color: black;
 }
 aside {
 	display: block;
