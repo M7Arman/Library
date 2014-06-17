@@ -9,4 +9,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^library/example/', 'libraryapp.views.example'),
+    url(r'^src/category', 'libraryapp.views.category'),
 )
