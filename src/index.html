@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app" ng-controller="AppCtrl as app">
 <head>
 	<meta charset="utf-8">
 	<title>Library!</title>
 	<link rel="stylesheet" href="css/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
 </head>
 
-<body  ng-app="app" ng-controller="AppCtrl as app">
+<body ng-controller="menuCtrl">
 	<div id="firstLine"  class="line"></div>
 	<div id="secondLine" class="line"></div>
 	<header>
@@ -16,14 +15,14 @@
 			<h1>Library</h1>
 		</div>
 		<nav>
-			<ul ng-controller="menuCtrl">
-				<li class="menu-{{menuList.home}}" ng-click="homeClick()">Home</li>
-				<li class="menu-{{menuList.contact}}" ng-click="contactClick()">Contact</li>
-				<li class="menu-{{menuList.aboutAs}}" ng-click="aboutAsClick()"><a>About us</a></li>
+			<ul>
+				<li class="menu-{{menuList.home}}" ng-click="homeClick()"><a ng-click="subPage='page/news.html'">Home</a></li>
+				<li class="menu-{{menuList.contact}}" ng-click="contactClick()"><a ng-click="subPage='page/contact.html'">Contact</a></li>
+				<li class="menu-{{menuList.aboutAs}}" ng-click="aboutAsClick()"><a ng-click="subPage='page/aboutAs.html'">About us</a></li>
 			</ul>
 		</nav>
 		<div id="login">
-			<span>Login/Sign up</span>
+			<span>Login/Registry</span>
 			<img src="images/user.png">
 		</div>
 	</header>
@@ -32,14 +31,10 @@
 		<section id="search">
 			<form>
 				<input type="text">
-				<input type="submit">
+				<input type="submit" value="Search">
 			</form>
 		</section>
-		
-		<section id="signin">
-			<a ng-click="subPage='#/contact.html'">Sign In</a>
-		</section>
-		
+			
 		<section id="category">
 			<h2>Category!</h2>
 		</section>
@@ -49,12 +44,12 @@
 
 	<article>
 		<section id="news">
-			<h2>News</h2>
 			<ng-include src="subPage">
-			Hey</ng-include>
+			</ng-include>
 		</section>
 	</article>
 	<footer><h3>footer</h3></footer>
 	<script src="js/menu.js"></script>
+	<script src="js/request.js"></script>
 </body>
 </html>
