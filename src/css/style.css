@@ -46,15 +46,17 @@ nav {
 	display: block;
 	padding-left: 50px;
 	padding-top: 70px;
-	width: 350px;
+	width: 30%;
 }
 
 nav ul li {
-	display: inline-block;
-	position: relative;
-	color: #53dbd9;
-	padding: 8px 20px;
-	cursor: pointer;
+display: inline-block;
+position: relative;
+color: #53dbd9;
+text-align: center;
+padding: 8px 10px;
+width: 70px;
+cursor: pointer;
 }
 
 .menu-true {
@@ -90,6 +92,9 @@ aside {
 	height: 500px;
 }
 
+aside section {
+	border: 2px solid rgb(18, 135, 180);
+}
 #search {
 	width: 70%;
 	height: 80px;
@@ -104,11 +109,20 @@ aside {
 	margin-left: 15%;
 }
 
+#search {
+	margin-top: 5%;
+}
+
+#searchForm {
+
+}
+
 #category {
 	width: 70%;
-	height: 80px;
-	margin-top: 10px;
+	margin-top: 5%;
 	margin-left: 15%;
+	padding-left: 2%;
+	padding-bottom: 5%;
 }
 article {
 	display: block;

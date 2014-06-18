@@ -7,7 +7,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
 </head>
 
-<body ng-controller="menuCtrl">
+<body ng-controller="menuCtrl" ng-init="categoryPath='page/category.html' searchPath='page/search.html'">
 	<div id="firstLine"  class="line"></div>
 	<div id="secondLine" class="line"></div>
 	<header>
@@ -29,14 +29,12 @@
 
 	<aside>
 		<section id="search">
-			<form>
-				<input type="text">
-				<input type="submit" value="Search">
-			</form>
+		{{searchPath}}
+		<ng-include src="searchPath"></ng-include>
 		</section>
 			
 		<section id="category">
-			<h2>Category!</h2>
+			<h1>Category</h2><ng-include id="categoryList" src="categoryPath"></ng-include>
 		</section>
 
 
