@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app" ng-controller="AppCtrl as app">
+<html ng-app="app" ng-controller="AppCtrl">
 <head>
 	<meta charset="utf-8">
 	<title>Library!</title>
@@ -12,16 +12,16 @@
 	<div id="secondLine" class="line"></div>
 	<header>
 		<div id="headerText">
-			<h1>Library</h1>
+			<h1 ng-click="homeClick()">Library</h1>
 		</div>
 		<nav>
 			<ul>
-				<li class="menu-{{menuList.home}}" ng-click="homeClick()"><a ng-click="subPage='page/news.html'">Home</a></li>
-				<li class="menu-{{menuList.contact}}" ng-click="contactClick()"><a ng-click="subPage='page/contact.html'">Contact</a></li>
-				<li class="menu-{{menuList.aboutAs}}" ng-click="aboutAsClick()"><a ng-click="subPage='page/aboutAs.html'">About us</a></li>
+				<li class="menu-{{menuList.home}}" ng-click="homeClick()">Home</li>
+				<li class="menu-{{menuList.contact}}" ng-click="contactClick()">Contact</li>
+				<li class="menu-{{menuList.aboutAs}}" ng-click="aboutAsClick()">About us</li>
 			</ul>
 		</nav>
-		<div id="login" ng-click="subPage='page/addUser.html'">
+		<div id="login" ng-click="addUserClick()">
 			<span>Login/Registry</span>
 			<img src="images/user.png">
 		</div>
@@ -44,7 +44,7 @@
 
 	<article>
 		<section id="news">
-			<ng-include src="subPage">
+			<ng-include src="getPath()">
 			</ng-include>
 		</section>
 	</article>
