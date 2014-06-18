@@ -10,7 +10,15 @@ def example(request):
 
 def category(request):
    category = Category.objects.all()
-   arr = []
+   categoryArr = []
    for i in category:
-      arr.append(i.name)
-   return HttpResponse(arr)
+      categoryArr.append(i.name)
+   return HttpResponse(categoryArr)
+
+def bookSearch(request):
+   bookSearch = Book.objects.all()
+   bookSearchArr = []
+   for i in bookSearch:
+      bookSearch.append(i.name)
+   return HttpResponse(bookSearchArr) 
+   
