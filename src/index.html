@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app" ng-controller="AppCtrl">
+<html ng-app>
 <head>
 	<meta charset="utf-8">
 	<title>Library!</title>
@@ -7,7 +7,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
 </head>
 
-<body ng-controller="menuCtrl" ng-init="categoryPath='page/category.html' searchPath='page/search.html'">
+<body ng-controller="menuCtrl" ng-init="categoryPath='page/category.html'; searchPath='page/search.html'; lettersPath='page/letters.html'">
 	<div id="firstLine"  class="line"></div>
 	<div id="secondLine" class="line"></div>
 	<header>
@@ -29,14 +29,16 @@
 
 	<aside>
 		<section id="search">
-		{{searchPath}}
 		<ng-include src="searchPath"></ng-include>
 		</section>
 			
 		<section id="category">
-			<h1>Category</h2><ng-include id="categoryList" src="categoryPath"></ng-include>
+			<h2>Category</h2><ng-include id="categoryList" src="categoryPath"></ng-include>
 		</section>
 
+		<section id="letters">
+			<h2>Letters</h2><ng-include src="lettersPath"></ng-include>
+		</section>
 
 	</aside>
 

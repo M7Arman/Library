@@ -1,12 +1,25 @@
-var app = angular.module("app", []);
+function searchCtrl ($scope, $http) {
 
-app.controller("AppCtrl", function ($http) {
-	$http.get("http://localhost/src/page/contact.html")
-		.success(function (data) {
-			console.log(data)
-		})
-	$http({method: 'GET', url: 'http://localhost/src/category'})
-		.success(function (data) {
-			console.log(data)
-		})
-})
+	$scope.method = 'GET';
+	//$scope.type = 'book';
+	$scope.url = 'http://localhost/src/book.html';
+
+	$scope.runSearch = function() {
+		$http({method: $scope.method, url: $scope.url}).
+			success(function(data, status) {
+				$scope.status = status;
+				$scope.data = data;
+			}). 
+			error (function(data, status) {
+				$scope.data = data || "Request failed";
+				$scope.status = status;
+			})
+	}
+
+	//TODO: argument@ poxel dardznel mi bar, isk URL-ner@ JSON-i mej lcnel
+	$scope.updateType = function(url) {
+		console.log(url);
+		$scope.url = url;
+		// change search type (book, author, user)
+	}
+}

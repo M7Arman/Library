@@ -1,4 +1,11 @@
-<form id="searchForm">
-	<input type="text">
-	<input type="submit" value="Search">
+<link rel="stylesheet" type="text/css" href="css/search.css">
+
+<form id="searchForm" ng-submit="runSearch()" ng-controller="searchCtrl">
+	<input type="text" ng-model="searchText">
+	<input type="submit" value="Search" id="runSearchBtn"><br>
+	<input type="radio" name="type" ng-model="url" value="http://localhost/src/book.html">Book 
+	<input type="radio" name="type" ng-model="url" value="http://localhost/src/author.html">Author
+	<div>{{searchText}}</div>
+	<div>{{status}}</div>
+	<div>{{data}}</div>
 </form>
