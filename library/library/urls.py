@@ -11,5 +11,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^library/example/', 'libraryapp.views.example'),
     url(r'^src/category', 'libraryapp.views.category'),
-    url(r'^library/bookSearch/(?P<bookName>)$', 'libraryapp.viwes.bookSearch'),
+    url(r'^library/bookSearch(?P<bookName>)', 'libraryapp.views.bookSearch'),
 )

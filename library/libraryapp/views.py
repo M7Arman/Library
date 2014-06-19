@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from libraryapp.models import Category
+from libraryapp.models import Category, Book
 import datetime
 def example(request):
    now = datetime.datetime.now()
@@ -15,10 +15,12 @@ def category(request):
       categoryArr.append(i.name)
    return HttpResponse(categoryArr)
 
-def bookSearch(request):
+def bookSearch(request, bookName = 'aaa'):
    bookSearch = Book.objects.all()
    bookSearchArr = []
    for i in bookSearch:
-      bookSearch.append(i.name)
-   return HttpResponse(bookSearchArr) 
+      bookSearchArr.append(i.name)
+      if bookName == bookSearchArr:
+          bookName = bookSearchArr 
+   return HttpResponse(bookName) 
    
