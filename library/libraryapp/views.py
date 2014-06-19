@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from libraryapp.models import Category, Book
 import datetime
+import json
 def example(request):
    now = datetime.datetime.now()
    html = "<html><body>It is now %s.</body></html>" % now
@@ -23,4 +24,13 @@ def bookSearch(request, bookName = 'aaa'):
       if bookName == bookSearchArr:
           bookName = bookSearchArr 
    return HttpResponse(bookName) 
-   
+  
+def randomTest(request):
+   callback = request.GET.get('callback', '')
+   req = []
+   req.append("Hello")
+   req.append("hi")
+   req.append("hjhvjhv")
+   response = json.dumps(req)
+   response = callback + '(' + response + ');'
+   return HttpResponse(response)

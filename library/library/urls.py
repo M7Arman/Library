@@ -9,7 +9,9 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^library/example/', 'libraryapp.views.example'),
+    url(r'^src/book.html', 'libraryapp.views.example'),
     url(r'^src/category', 'libraryapp.views.category'),
     url(r'^library/bookSearch(?P<bookName>)', 'libraryapp.views.bookSearch'),
+    url(r'^library/example', 'libraryapp.views.randomTest'),
+
 )
