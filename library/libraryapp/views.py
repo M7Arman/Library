@@ -19,16 +19,16 @@ def category(request):
 def bookSearch(request):
    callback = request.GET.get('callback', '')
    bookName = request.GET['bookName']
-   #bookSearch = Book.objects.all()
-   #bookSearchArr = []
-   #for i in bookSearch:
-   #bookSearchArr.append(i.name)
-   #if bookName == bookSearchArr:
-   #bookName = bookSearchArr
-   response = json.dumps(bookName)
+   bookSearch = Book.objects.all()
+   bookSearchArr = []
+   for i in bookSearch:
+      bookSearchArr.append(i.name)
+      returnValue = "Error Failed name"
+      if bookName == i.name:
+         returnValue = i.name
+   response = json.dumps(returnValue)
    response = callback + '(' + response + ');'
    return HttpResponse(response) 
-
   
 def randomTest(request):
    callback = request.GET.get('callback', '')
