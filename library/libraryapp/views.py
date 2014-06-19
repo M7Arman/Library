@@ -16,14 +16,19 @@ def category(request):
       categoryArr.append(i.name)
    return HttpResponse(categoryArr)
 
-def bookSearch(request, bookName = 'aaa'):
-   bookSearch = Book.objects.all()
-   bookSearchArr = []
-   for i in bookSearch:
-      bookSearchArr.append(i.name)
-      if bookName == bookSearchArr:
-          bookName = bookSearchArr 
-   return HttpResponse(bookName) 
+def bookSearch(request):
+   callback = request.GET.get('callback', '')
+   bookName = request.GET['bookName']
+   #bookSearch = Book.objects.all()
+   #bookSearchArr = []
+   #for i in bookSearch:
+   #bookSearchArr.append(i.name)
+   #if bookName == bookSearchArr:
+   #bookName = bookSearchArr
+   response = json.dumps(bookName)
+   response = callback + '(' + response + ');'
+   return HttpResponse(response) 
+
   
 def randomTest(request):
    callback = request.GET.get('callback', '')
