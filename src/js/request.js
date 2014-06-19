@@ -1,21 +1,15 @@
 function searchCtrl ($scope, $http) {
 
-	//$scope.method = 'GET';
-	//$scope.type = 'book';
-	$scope.url = 'http://localhost/src/book.html?callback=JSON_CALLBACK';
-
 	$scope.runSearch = function() {
+	console.log($scope.searchText);
+	$scope.url = 'http://localhost:8000/library/bookSearch?callback=JSON_CALLBACK&bookName='+$scope.searchText;
 		$http.jsonp($scope.url)
 			.success(function(data, status, headers, config) {
 				console.log(data);
-				console.log(config);
-				$scope.status = status;
 				$scope.data = data;
 			})
 			.error (function(data, status, headers, config) {
-				console.log(status);
-				console.log(config);
-
+				console.log("error");
 				$scope.data = data || "Request failed";
 				$scope.status = status;
 			})
