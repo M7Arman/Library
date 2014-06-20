@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from libraryapp.models import Category, Book
+from libraryapp.models import Category, Book, Author, BookAndAuthor, Language
 import datetime
 import json
 def example(request):
@@ -18,15 +18,17 @@ def category(request):
 
 def bookSearch(request):
    callback = request.GET.get('callback', '')
-   bookName = request.GET['bookName']
-   bookSearch = Book.objects.all()
-   bookSearchArr = []
-   for i in bookSearch:
-      bookSearchArr.append(i.name)
-      returnValue = "Error Failed name"
-      if bookName == i.name:
-         returnValue = i.name
-   response = json.dumps(returnValue)
+   bookName = Book.objects.get(name = request.GET['bookName'])
+   bookAndAuthorObj = BookAndAuthor.objects.filter(bookId = bookName.id)
+  # authorName = Author.objects.filter(id = bookAndAuthorObj.authorId)
+  # language = Language.objects.filter(id = bookName.languageId)
+   response = []
+   response.append(bookName.name)
+   response.append(bookName.id)
+#   response.append(bookName.manufactureYear)
+   response.append(bookName.isbnCode)
+   #response.append(bookAndAuthorObj.bookId)
+   response = json.dumps(response)
    response = callback + '(' + response + ');'
    return HttpResponse(response) 
   
