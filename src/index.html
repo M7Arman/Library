@@ -30,26 +30,26 @@
 
 	<aside>
 		<section id="search">
-			<form id="searchForm" ng-submit="runSearch(); searchBtnClick()">
+			<form id="searchForm" ng-submit="searchRequest(); searchBtnClick()">
 				<input type="text" ng-model="searchText">
 				<input type="submit" value="Search" id="runSearchBtn"><br>
-				<input type="radio" name="type" ng-model="url" value="http://localhost/src/book.html?callback=JSON_CALLBACK">Book 
-				<input type="radio" name="type" ng-model="url" value="http://localhost/src/author.html?callback=JSON_CALLBACK">	Author
+				<input type="radio" name="type" ng-model="urlSearch" value="http://localhost:8000/library/bookSearch?callback=JSON_CALLBACK&bookName=">Book 
+				<input type="radio" name="type" ng-model="urlSearch" value="http://localhost:8000/library/bookSearch?callback=JSON_CALLBACK&authorName=">	Author
 			</form>
 		</section>
 			
 		<section id="category">
 			<h2>Category</h2>
-			<div>
-				<a>Physics</a><br>
+			<div ng-repeat='category in categories'>
+				<li ng-click="categoryRequest($index)">{{category}}</li>
 			</div>
 		</section>
 
 		<section id="letters">
 			<h2>Letters</h2>
-			<a>A</a><br>
-			<a>B</a><br>
-			<a>C</a><br>
+			<div  ng-repeat='letter in letters'>
+				<a>{{letter}}</a>
+			</div>
 		</section>
 
 	</aside>
@@ -62,6 +62,5 @@
 	</article>
 	<footer><h3>footer</h3></footer>
 	<script src="js/menu.js"></script>
-	<script src="js/request.js"></script>
 </body>
 </html>

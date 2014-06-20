@@ -93,44 +93,24 @@ aside {
 }
 
 aside section {
+	margin-top: 5%;
 	border: 2px solid rgb(18, 135, 180);
-}
-#search {
 	width: 70%;
-	height: 80px;
-	margin-top: 10px;
-	margin-left: 15%;
-}
-
-#signin {
-	width: 70%;
-	height: 80px;
-	margin-top: 10px;
-	margin-left: 15%;
-}
-
-#search {
-	margin-top: 5%;
-}
-
-#searchForm {
-
-}
-
-#category {
-	width: 70%;
-	margin-top: 5%;
 	margin-left: 15%;
 	padding-left: 2%;
 	padding-bottom: 5%;
 }
+
+#category li {
+	cursor: pointer;
+}
+
 article {
 	display: block;
 	float: right;
 	width: 65%;
 	height: 500px;
 }
-
 #news {
 	width: 70%;
 	height: 400px;
