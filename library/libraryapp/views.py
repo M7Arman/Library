@@ -20,9 +20,11 @@ def bookSearch(request):
    callback = request.GET.get('callback', '')
    bookName = Book.objects.get(name = request.GET['bookName'])
    bookAndAuthorObj = BookAndAuthor.objects.filter(bookId = bookName.id)
-  # authorName = Author.objects.filter(id = bookAndAuthorObj.authorId)
+    #authorName = Author.objects.filter(id = bookAndAuthorObj.authorId)
   # language = Language.objects.filter(id = bookName.languageId)
    response = []
+   for y in bookAndAuthorObj:
+      response.append(y.bookId.id)
    response.append(bookName.name)
    response.append(bookName.id)
 #   response.append(bookName.manufactureYear)

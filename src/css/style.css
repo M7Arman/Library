@@ -89,12 +89,16 @@ aside {
 	display: block;
 	float: left;
 	width: 35%;
-	height: 500px;
+}
+
+section {
+	border: 1px solid rgb(178, 181, 182);
+	background-color: rgba(206, 206, 206, 0.51);
+	box-shadow: 0 0 2px rgba(255, 255, 255, 1);
 }
 
 aside section {
 	margin-top: 5%;
-	border: 2px solid rgb(18, 135, 180);
 	width: 70%;
 	margin-left: 15%;
 	padding-left: 2%;
@@ -111,13 +115,17 @@ article {
 	width: 65%;
 	height: 500px;
 }
-#news {
+article section {
 	width: 70%;
 	height: 400px;
 	margin-left: 15%;
-	margin-top: 50px;;
+	margin-top: 50px;
 }
 
 footer {
-	display: block;
+	display: inline-block;
+	width: 100%;
+	height: 300px;
+	background-color: #3F3F3F;
+	margin-top: 10px;
 }
