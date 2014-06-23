@@ -24,7 +24,7 @@ def bookSearch(request):
   # language = Language.objects.filter(id = bookName.languageId)
    response = []
    for y in bookAndAuthorObj:
-      response.append(y.bookId.id)
+      response.append(y.authorId.name)
    response.append(bookName.name)
    response.append(bookName.id)
 #   response.append(bookName.manufactureYear)

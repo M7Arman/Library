@@ -23,13 +23,21 @@ class LanguageAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
    list_display = ['name', 'id']
 
+class BookAndAuthorAdmin(admin.ModelAdmin):
+   list_display = ['id', 'getAuthorName', 'getBookName' ]
+   def getAuthorName(self,obj):
+      return obj.authorId.name
+   
+   def getBookName(self,obj):
+      return obj.bookId.name
+         
 
 admin.site.register(Book, BookAdmin)
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(User, UserAdmin)
-admin.site.register(BookAndAuthor)
+admin.site.register(BookAndAuthor, BookAndAuthorAdmin)
 admin.site.register(BookAndCategory)
 admin.site.register(BookAndUser)
 # Register your models here.
