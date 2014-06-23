@@ -21,15 +21,16 @@ def bookSearch(request):
    bookName = Book.objects.get(name = request.GET['bookName'])
    bookAndAuthorObj = BookAndAuthor.objects.filter(bookId = bookName.id)
    #authorName = Author.objects.filter(id = bookAndAuthorObj.authorId)
-   #language = Language.objects.filter(id = bookName.languageId)
+   language = Language.objects.filter(id = bookName.languageId.id)
    response = []
    for y in bookAndAuthorObj:
-      response.append(y.authorId.name)
-   response.append(bookName.name)
-   response.append(bookName.id)
-   #response.append(bookName.manufactureYear)
-   response.append(bookName.isbnCode)
-   #response.append(bookAndAuthorObj.bookId)
+      jsonstring = ({
+         "authorName" : y.authorId.name,
+         "bookName" : bookName.name,
+         "bookIsbnCode" : bookName.isbnCode,
+         "bookLanguage" : language.name,
+         })
+   response.append(jsonstring)
    response = json.dumps(response)
    response = callback + '(' + response + ');'
    return HttpResponse(response) 
