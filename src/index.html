@@ -9,7 +9,7 @@
 </head>
 
 
-<body ng-controller="menuCtrl">
+<body ng-controller="menuCtrl" ng-init="categoryListRequest()">
 	<div id="lineOfHeader"  class="line"></div>
 	<div id="lineOfBody" class="line"></div>
 	<div id="lineOfFooter"></div>
@@ -33,10 +33,10 @@
 	<aside>
 		<section id="search">
 			<form id="searchForm" ng-submit="searchRequest(); searchBtnClick()">
-				<input type="text" ng-model="searchText">
+				<input type="text" ng-model="searchingText">
 				<input type="submit" value="Search" id="runSearchBtn"><br>
-				<input type="radio" name="type" ng-model="urlSearch" value="http://192.168.33.59:8000/library/bookSearch?callback=JSON_CALLBACK&bookName=">Book 
-				<input type="radio" name="type" ng-model="urlSearch" value="http://localhost:8000/library/bookSearch?callback=JSON_CALLBACK&authorName=">	Author
+				<input type="radio" name="type" ng-model="searchSort" value="/bookSearch?">Book 
+				<input type="radio" name="type" ng-model="searchSort" value="/authorSearch?">Author
 			</form>
 		</section>
 			
