@@ -3,17 +3,20 @@ body {
 	background-color: #E3E3E3;
 	margin: 0;
 }
-#firstLine {
+
+#lineOfHeader {
 	background-color: #0F3C47;
 	height: 120px;
 	box-shadow: 0px 0px 30px 3px rgba(1, 41, 66, 1);
 }
-#secondLine {
+
+#lineOfBody {
 	height: 850px;
 	margin-top: 120px;
 	background-color: #A1A1A1;
 	box-shadow: 0px 0px 30px 3px rgba(137, 137, 137, 1);
 }
+
 .line {
 	margin-left: 35%;
 	position: absolute;
@@ -50,13 +53,13 @@ nav {
 }
 
 nav ul li {
-display: inline-block;
-position: relative;
-color: #53dbd9;
-text-align: center;
-padding: 8px 10px;
-width: 70px;
-cursor: pointer;
+	display: inline-block;
+	position: relative;
+	color: #53dbd9;
+	text-align: center;
+	padding: 8px 10px;
+	width: 70px;
+	cursor: pointer;
 }
 
 .menu-true {
@@ -98,11 +101,17 @@ section {
 }
 
 aside section {
-	margin-top: 5%;
+	margin-top: 10%;
 	width: 70%;
 	margin-left: 15%;
 	padding-left: 2%;
 	padding-bottom: 5%;
+}
+
+#letters span {
+margin-right: 6%;
+margin-top: 5%;
+cursor: pointer;
 }
 
 #category li {
@@ -117,7 +126,7 @@ article {
 }
 article section {
 	width: 70%;
-	height: 400px;
+	height: 300px;
 	margin-left: 15%;
 	margin-top: 50px;
 }
@@ -129,3 +138,5 @@ footer {
 	background-color: #3F3F3F;
 	margin-top: 10px;
 }
+
+
