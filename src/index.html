@@ -35,7 +35,7 @@
 			<form id="searchForm" ng-submit="searchRequest(); searchBtnClick()">
 				<input type="text" ng-model="searchText">
 				<input type="submit" value="Search" id="runSearchBtn"><br>
-				<input type="radio" name="type" ng-model="urlSearch" value="http://192.168.33.59:8000/library/bookSearch?callback=JSON_CALLBACK&bookName=">Book 
+				<input type="radio" name="type" ng-model="urlSearch" value="http://localhost:8000/library/bookSearch?callback=JSON_CALLBACK&bookName=">Book 
 				<input type="radio" name="type" ng-model="urlSearch" value="http://localhost:8000/library/bookSearch?callback=JSON_CALLBACK&authorName=">	Author
 			</form>
 		</section>

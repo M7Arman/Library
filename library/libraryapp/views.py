@@ -1,12 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from libraryapp.models import Category, Book, Author, BookAndAuthor, Language
+from libraryapp.models import Category, Book, Author, BookAndAuthor, Language, BookAndCategory
 import datetime
 import json
-def example(request):
-   now = datetime.datetime.now()
-   html = "<html><body>It is now %s.</body></html>" % now
-   return HttpResponse(html)
 # Create your views here.
 
 def category(request):
@@ -20,27 +16,21 @@ def bookSearch(request):
    callback = request.GET.get('callback', '')
    bookName = Book.objects.get(name = request.GET['bookName'])
    bookAndAuthorObj = BookAndAuthor.objects.filter(bookId = bookName.id)
-   #authorName = Author.objects.filter(id = bookAndAuthorObj.authorId)
    language = Language.objects.filter(id = bookName.languageId.id)
+   category = BookAndCategory.objects.filter(bookId = bookName.id)
    response = []
-   for y in bookAndAuthorObj:
-      jsonstring = ({
-         "authorName" : y.authorId.name,
-         "bookName" : bookName.name,
-         "bookIsbnCode" : bookName.isbnCode,
-         "bookLanguage" : language.name,
-         })
-   response.append(jsonstring)
+   for choseBook in bookAndAuthorObj:
+       for choseBookLanguage in language:
+           for choseBookCategory in category:
+               sendInformation = ({
+                  "authorName" : choseBook.authorId.name,
+                  "bookName" : bookName.name,
+                  "bookIsbnCode" : bookName.isbnCode,
+                  "bookLanguage" : choseBookLanguage.name,
+                  "bookCategory" : choseBookCategory.categoryId.name 
+             })
+   response.append(sendInformation)
    response = json.dumps(response)
    response = callback + '(' + response + ');'
    return HttpResponse(response) 
   
-def randomTest(request):
-   callback = request.GET.get('callback', '')
-   req = []
-   req.append("Hello")
-   req.append("hi")
-   req.append("hjhvjhv")
-   response = json.dumps(req)
-   response = callback + '(' + response + ');'
-   return HttpResponse(response)
