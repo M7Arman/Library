@@ -6,11 +6,17 @@ import json
 # Create your views here.
 
 def category(request):
+   callback = request.GET.get('callback', '')
    category = Category.objects.all()
-   categoryArr = []
+   response = []
    for i in category:
-      categoryArr.append(i.name)
-   return HttpResponse(categoryArr)
+       sendInformation = {
+             "category" : i.name
+             }
+       response.append(sendInformation)
+   response = json.dumps(response)
+   response = callback + '(' + response + ');'
+   return HttpResponse(response)
 
 def bookSearch(request):
    callback = request.GET.get('callback', '')
@@ -22,14 +28,14 @@ def bookSearch(request):
    for choseBook in bookAndAuthorObj:
        for choseBookLanguage in language:
            for choseBookCategory in category:
-               sendInformation = ({
+               sendInformation = {
                   "authorName" : choseBook.authorId.name,
                   "bookName" : bookName.name,
                   "bookIsbnCode" : bookName.isbnCode,
                   "bookLanguage" : choseBookLanguage.name,
                   "bookCategory" : choseBookCategory.categoryId.name 
-             })
-   response.append(sendInformation)
+             }
+       response.append(sendInformation)
    response = json.dumps(response)
    response = callback + '(' + response + ');'
    return HttpResponse(response) 
