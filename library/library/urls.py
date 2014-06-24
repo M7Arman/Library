@@ -9,8 +9,9 @@ urlpatterns = patterns('libraryapp.views',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^library/category', 'category'),
+    url(r'^library/categoryList', 'category'),
     url(r'^library/bookSearch', 'bookSearch'),
     url(r'^library/authorSearch', 'authorSearch'),
+    url(r'^library/categoryBooks', 'categoryBooks'),
 
 )

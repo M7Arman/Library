@@ -15,7 +15,7 @@ function menuCtrl($scope, $http) {
 		aboutAs: 'page/aboutAs.html',
 		addUser: 'page/addUser.html',
 		searchData: 'page/search.html',
-		categoryData: 'page/category.html',
+		categoryData: 'page/categoryData.html',
 	};
 
 	$scope.currentPath = $scope.filesPath.home;
@@ -52,7 +52,7 @@ function menuCtrl($scope, $http) {
 	$scope.getPath = function() {
 		return $scope.currentPath;
 	};
-
+/*
 	$scope.categoriesResponse = [		// attempt
 		'Art',
 		'Business',
@@ -60,11 +60,11 @@ function menuCtrl($scope, $http) {
 		'Humor',
 		'Science'
 	]
-	$scope.letters = [
+*/	$scope.letters = [
 	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 
 	'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'V', 'X', 'Y', 'Z']
 
-	$scope.categories = $scope.categoriesResponse;  // attempt
+	//$scope.categories = $scope.categoriesResponse;  // attempt
 
 ///////////////////////////////////// REQUESTS /////////////////////////////////////
 
@@ -91,11 +91,12 @@ function menuCtrl($scope, $http) {
 	};
 
 	$scope.categoryListRequest = function() {
-		$scope.fullPath = $scope.url + '/category?' + $scope.callback;
+
+		$scope.fullPath = $scope.url + '/categoryList?' + $scope.callback;
 
 		$http.jsonp($scope.fullPath)
 			.success(function(data) {
-		
+				$scope.categories = data;
 				console.log(data);
 			})
 			.error (function(data) {
@@ -107,12 +108,14 @@ function menuCtrl($scope, $http) {
 
 	$scope.categoryRequest = function(index) {
 		$scope.clearTrue();
+		$scope.currentPath = $scope.filesPath.categoryData;
 
 		$scope.index = index;
-		$scope.fullPath = $scope.url + '/category?' + $scope.callback + '&Name=' + $scope.categoriesResponse[$scope.index];
+		$scope.fullPath = $scope.url + '/categoryBooks?' + $scope.callback + '&name=' + $scope.categories[$scope.index];
 		$http.jsonp($scope.fullPath)
 			.success(function(data, status, headers, config) {	
-				///
+				console.log(data);
+				$scope.categoryBooks = data;
 			})
 			.error (function(data, status, headers, config) {
 				///

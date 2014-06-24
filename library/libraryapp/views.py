@@ -10,10 +10,7 @@ def category(request):
    category = Category.objects.all()
    response = []
    for i in category:
-       sendInformation = {
-             "category" : i.name
-             }
-       response.append(sendInformation)
+       response.append(i.name)
    response = json.dumps(response)
    response = callback + '(' + response + ');'
    return HttpResponse(response)
@@ -49,4 +46,16 @@ def authorSearch(request):
    response = callback + '(' + response + ');'
    return HttpResponse(response)
 
-  
+def categoryBooks(request):
+    callback = request.GET.get('callback', '')
+    category = Category.objects.get(name = request.GET['name'])
+    response = []
+    choseCategory = BookAndCategory.objects.filter(categoryId = category.id)
+    for i in choseCategory:
+        response.append(i.bookId.name)
+    response = json.dumps(response)
+    response = callback + '(' + response + ');'
+    return HttpResponse(response)
+
+
+
