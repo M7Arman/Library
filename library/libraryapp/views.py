@@ -14,7 +14,7 @@ def category(request):
 
 def bookSearch(request):
    callback = request.GET.get('callback', '')
-   bookName = Book.objects.get(name = request.GET['bookName'])
+   bookName = Book.objects.get(name = request.GET['name'])
    bookAndAuthorObj = BookAndAuthor.objects.filter(bookId = bookName.id)
    language = Language.objects.filter(id = bookName.languageId.id)
    category = BookAndCategory.objects.filter(bookId = bookName.id)
@@ -33,4 +33,14 @@ def bookSearch(request):
    response = json.dumps(response)
    response = callback + '(' + response + ');'
    return HttpResponse(response) 
+
+def authorSearch(request):
+   callback = request.GET.get('callback', '')
+   authorName = Author.objects.get(name = request.GET['name'])
+   response = []
+   response.append(authorName.name)
+   response = json.dumps(response)
+   response = callback + '(' + response + ');'
+   return HttpResponse(response)
+
   
