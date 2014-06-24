@@ -4,31 +4,36 @@ function menuCtrl($scope, $http) {
 		contact: false,
 		aboutAs: false,
 	};
-	$scope.paths = {
+
+	$scope.url = 'http://localhost:8000/library';
+	$scope.callback = 'callback=JSON_CALLBACK';
+	
+
+	$scope.filesPath = {
 		home: 'page/news.html',
 		contact: 'page/contact.html',
 		aboutAs: 'page/aboutAs.html',
 		addUser: 'page/addUser.html',
 		searchData: 'page/search.html',
 		categoryData: 'page/category.html',
-	}
+	};
 
-	$scope.currentPath = $scope.paths.home;
+	$scope.currentPath = $scope.filesPath.home;
 
 	$scope.homeClick = function() {
-		$scope.currentPath = $scope.paths.home;
+		$scope.currentPath = $scope.filesPath.home;
 		$scope.clearTrue();
 		$scope.menuList.home = true;
 	};
 
 	$scope.contactClick = function() {
-		$scope.currentPath = $scope.paths.contact;
+		$scope.currentPath = $scope.filesPath.contact;
 		$scope.clearTrue();
 		$scope.menuList.contact = true;
 	};
 
 	$scope.aboutAsClick = function() {
-		$scope.currentPath = $scope.paths.aboutAs;
+		$scope.currentPath = $scope.filesPath.aboutAs;
 		$scope.clearTrue();
 		$scope.menuList.aboutAs = true;
 	};
@@ -41,7 +46,7 @@ function menuCtrl($scope, $http) {
 
 	$scope.addUserClick = function() {
 		$scope.clearTrue();
-		$scope.currentPath = $scope.paths.addUser;
+		$scope.currentPath = $scope.filesPath.addUser;
 	}
 
 	$scope.getPath = function() {
@@ -61,46 +66,57 @@ function menuCtrl($scope, $http) {
 
 	$scope.categories = $scope.categoriesResponse;  // attempt
 
-	$scope.categoryRequest = function(index) {
-		$scope.index = index;
-		$scope.clearTrue();
-		$scope.categoryUrl = 'http://localhost:8000/library/bookSearch?callback=JSON_CALLBACK&bookName=' + $scope.categoriesResponse[$scope.index];
-		console.log($scope.categoryUrl);
-		$http.jsonp($scope.categoryUrl)
-			.success(function(data, status, headers, config) {	
-				//
-			})
-			.error (function(data, status, headers, config) {
-				console.log("error");
-			})
-	}
+///////////////////////////////////// REQUESTS /////////////////////////////////////
 
-		// default path
-	$scope.urlSearch = 'http://localhost:8000/library/bookSearch?callback=JSON_CALLBACK&bookName=';
+			// default search sort 
+	$scope.searchSort = '/bookSearch?'; 
  	$scope.searchRequest = function() {
  		$scope.clearTrue();
- 		$scope.currentPath = $scope.paths.searchData;
-		$scope.fullUrl = $scope.urlSearch + $scope.searchText;
-		$http.jsonp($scope.fullUrl)
+ 		$scope.currentPath = $scope.filesPath.searchData;
+ 		
+ 		$scope.fullPath = $scope.url + $scope.searchSort + $scope.callback + '&name=' + $scope.searchingText;
+		$http.jsonp($scope.fullPath)
 			.success(function(data, status, headers, config) {	
 				console.log(data);
 				$scope.data = data;
-				$scope.status = status;
-				console.log($scope.data, "Hey");
+				$scope.searchingText = "";
 			})
 			.error (function(data, status, headers, config) {
 				console.log("error");
 				$scope.data = data || "Request failed";
-				$scope.status = status;
 				console.log($scope.data);
-
+				$scope.searchingText = "";
 			})
-	}
+	};
 
-	//TODO: argument@ poxel dardznel mi bar, isk URL-ner@ JSON-i mej lcnel
-	$scope.updateType = function(url) {
-		console.log(url);
-		$scope.url = url;
-		// change search type (book, author, user)
-	}
+	$scope.categoryListRequest = function() {
+		$scope.fullPath = $scope.url + '/category?' + $scope.callback;
+
+		$http.jsonp($scope.fullPath)
+			.success(function(data) {
+				///
+			})
+			.error (function(data) {
+				///
+				console.log("error categoryListRequest");
+			})
+	};
+
+
+	$scope.categoryRequest = function(index) {
+		$scope.clearTrue();
+
+		$scope.index = index;
+		$scope.fullPath = $scope.url + '/category?' + $scope.callback + '&Name=' + $scope.categoriesResponse[$scope.index];
+		$http.jsonp($scope.fullPath)
+			.success(function(data, status, headers, config) {	
+				///
+			})
+			.error (function(data, status, headers, config) {
+				///
+				console.log("error");
+			})
+	};
+
+////////////////////////////////////////////////////////////////////////////////////
 }
