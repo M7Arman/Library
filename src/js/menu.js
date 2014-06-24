@@ -79,6 +79,7 @@ function menuCtrl($scope, $http) {
 			.success(function(data, status, headers, config) {	
 				console.log(data);
 				$scope.data = data;
+				console.log($scope.data[0].authorName)
 				$scope.searchingText = "";
 			})
 			.error (function(data, status, headers, config) {
@@ -94,7 +95,8 @@ function menuCtrl($scope, $http) {
 
 		$http.jsonp($scope.fullPath)
 			.success(function(data) {
-				///
+		
+				console.log(data);
 			})
 			.error (function(data) {
 				///

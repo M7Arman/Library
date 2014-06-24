@@ -18,7 +18,7 @@ body {
 }
 
 .line {
-	margin-left: 35%;
+	margin-left: 484px;
 	position: absolute;
 	width: 1px;
 	z-index: 10;
@@ -49,7 +49,7 @@ nav {
 	display: block;
 	padding-left: 50px;
 	padding-top: 70px;
-	width: 30%;
+	width: 400px;
 }
 
 nav ul li {
@@ -72,7 +72,7 @@ nav ul li {
 	width: 165px;
 	display: block;
 	height: 80px;
-	margin-left: 45%;
+	margin-left: 600px;
 	margin-top: -9%;
 	background-color: rgba(99, 151, 167, 0.39);
 }
@@ -91,7 +91,7 @@ nav ul li {
 aside {
 	display: block;
 	float: left;
-	width: 35%;
+	width: 484px;
 }
 
 section {
@@ -121,8 +121,8 @@ cursor: pointer;
 article {
 	display: block;
 	float: right;
-	width: 65%;
-	height: 500px;
+	width: 897px;
+	height: 1000px;
 }
 article section {
 	width: 70%;
