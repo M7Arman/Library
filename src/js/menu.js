@@ -77,12 +77,9 @@ angular.module("libraryApp", [])
  		
  		$scope.fullPath = $scope.url + $scope.searchSort + $scope.callback + '&name=' + $scope.searchingText;
 		$http.jsonp($scope.fullPath)
-			.success(function(data, status, headers, config) {	
-				console.log(data);
+			.success(function(data, status, headers, config) {
 				$scope.dataSearch = data;
-				console.log($scope.dataSearch[0].authorName)
 				$scope.searchingText = "";
-
 			})
 			.error (function(data, status, headers, config) {
 				console.log("error");

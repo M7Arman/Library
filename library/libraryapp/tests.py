@@ -1,5 +1,8 @@
 from django.test import TestCase
+from django.utils import unittest
+from django.test.client import RequestFactory
 from libraryapp.models import Book, Language, Author, Category, User, BookAndAuthor
+from libraryapp.views import category
 # Create your tests here.
 
 class BookTestCase(TestCase):
@@ -42,6 +45,18 @@ class BookAndAuthorTestCase(TestCase):
     def test_bookAndAuthor(self):
         bookAndAuthor = BookAndAuthor.objects.get(bookId = self.book, authorId = self.author)
 
+
+       
+class CategoryTest(unittest.TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_category(self):
+        request = self.factory.get('/library/categoryList')
+        response = category(request)
+        self.assertEqual(response.data_code, Humor)
+
+       
 
 
 

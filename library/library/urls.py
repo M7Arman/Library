@@ -13,5 +13,6 @@ urlpatterns = patterns('libraryapp.views',
     url(r'^library/bookSearch', 'bookSearch'),
     url(r'^library/authorSearch', 'authorSearch'),
     url(r'^library/categoryBooks', 'categoryBooks'),
+    url(r'^library/example', 'example'),
 
 )

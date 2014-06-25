@@ -1,6 +1,6 @@
 <span ng-repeat='data in dataSearch'>
 	<section>
-		<h3>Book name: {{data.bookName}}</h3> (<span>{{data.authorName}}</span>)
+		<h3>Book name: {{data.bookName}}</h3> (<span ng-repeat='author in data.authorName' ><span>{{author}}, </span></span>)
 		<h5>{{dataSearch}}</h5>
 	</section>
 </span>

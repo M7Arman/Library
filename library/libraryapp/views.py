@@ -62,4 +62,10 @@ def categoryBooks(request):
     return HttpResponse(response)
 
 
-
+def example(request):
+    callback = request.GET.get('callback', '')
+    response = []
+    response.append("Heyy")
+    response = json.dumps(response)
+    response = callback + '(' + response + ');'
+    return HttpResponse(response)
