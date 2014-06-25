@@ -1,3 +1,6 @@
-<h2>search text: {{searcshText}}</h2><br>
-<h2>Result: {{searcshText}}</h2><br>
-<h1>{{data}}</h1>
+<span ng-repeat='data in dataSearch'>
+	<section>
+		<h3>Book name: {{data.bookName}}</h3> (<span>{{data.authorName}}</span>)
+		<h5>{{dataSearch}}</h5>
+	</section>
+</span>

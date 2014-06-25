@@ -1,4 +1,5 @@
-function menuCtrl($scope, $http) {
+angular.module("libraryApp", [])
+.controller("menuCtrl", function ($scope, $http) {
 	$scope.menuList = {
 		home: true,
 		contact: false,
@@ -78,14 +79,15 @@ function menuCtrl($scope, $http) {
 		$http.jsonp($scope.fullPath)
 			.success(function(data, status, headers, config) {	
 				console.log(data);
-				$scope.data = data;
-				console.log($scope.data[0].authorName)
+				$scope.dataSearch = data;
+				console.log($scope.dataSearch[0].authorName)
 				$scope.searchingText = "";
+
 			})
 			.error (function(data, status, headers, config) {
 				console.log("error");
-				$scope.data = data || "Request failed";
-				console.log($scope.data);
+				$scope.dataSearch = data || "Request failed";
+				console.log($scope.dataSearch);
 				$scope.searchingText = "";
 			})
 	};
@@ -123,5 +125,12 @@ function menuCtrl($scope, $http) {
 			})
 	};
 
+	$scope.clickBookFromCategory =function(index) {
+		$scope.indexOfBook = index;
+		$scope.searchSort = '/bookSearch?';
+		$scope.searchingText = $scope.categoryBooks[$scope.indexOfBook]; // categoryBooks global sarqel!
+		$scope.searchRequest();
+	}
+
 ////////////////////////////////////////////////////////////////////////////////////
-}
+});

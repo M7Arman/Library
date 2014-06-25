@@ -1,1 +1,5 @@
-<div ng-repeat='categoryBook in categoryBooks'>{{categoryBook}}</div>
+<section>
+	<div ng-repeat='categoryBook in categoryBooks'>
+		<span ng-click="clickBookFromCategory($index)">{{categoryBook}}</span>
+	</div>
+</section>
