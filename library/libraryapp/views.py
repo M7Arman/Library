@@ -22,17 +22,18 @@ def bookSearch(request):
    language = Language.objects.filter(id = bookName.languageId.id)
    category = BookAndCategory.objects.filter(bookId = bookName.id)
    response = []
+   for choseBookLanguage in language:
+       for choseBookCategory in category:
+           sendInformation = {
+              "authorName" : [],
+              "bookName" : bookName.name,
+              "bookIsbnCode" : bookName.isbnCode,
+              "bookLanguage" : choseBookLanguage.name,
+              "bookCategory" : choseBookCategory.categoryId.name 
+         }
    for choseBook in bookAndAuthorObj:
-       for choseBookLanguage in language:
-           for choseBookCategory in category:
-               sendInformation = {
-                  "authorName" : choseBook.authorId.name,
-                  "bookName" : bookName.name,
-                  "bookIsbnCode" : bookName.isbnCode,
-                  "bookLanguage" : choseBookLanguage.name,
-                  "bookCategory" : choseBookCategory.categoryId.name 
-             }
-       response.append(sendInformation)
+       sendInformation["authorName"].append(choseBook.authorId.name)
+   response.append(sendInformation)
    response = json.dumps(response)
    response = callback + '(' + response + ');'
    return HttpResponse(response) 
@@ -56,7 +57,7 @@ def categoryBooks(request):
     choseCategory = BookAndCategory.objects.filter(categoryId = category.id)
     for i in choseCategory:
         response.append(i.bookId.name)
-#    response = json.dumps(response)
+    response = json.dumps(response)
     response = callback + '(' + response + ');'
     return HttpResponse(response)
 
