@@ -1,5 +1,6 @@
-angular.module("libraryApp", [])
-.controller("menuCtrl", function ($scope, $http) {
+//console.log("aaa");
+var libraryApp = angular.module("libraryApp", []);
+libraryApp.controller("menuCtrl", function ($scope, $http) {
 	$scope.menuList = {
 		home: true,
 		contact: false,
@@ -53,19 +54,11 @@ angular.module("libraryApp", [])
 	$scope.getPath = function() {
 		return $scope.currentPath;
 	};
-/*
-	$scope.categoriesResponse = [		// attempt
-		'Art',
-		'Business',
-		'Philosophy',
-		'Humor',
-		'Science'
-	]
-*/	$scope.letters = [
-	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 
-	'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'V', 'X', 'Y', 'Z']
 
-	//$scope.categories = $scope.categoriesResponse;  // attempt
+  	$scope.letters = [
+	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 
+	'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T','U', 'V','W', 'X', 'Y', 'Z'];
+	console.log($scope.letters.length);
 
 ///////////////////////////////////// REQUESTS /////////////////////////////////////
 
