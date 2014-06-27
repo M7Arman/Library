@@ -2,6 +2,7 @@ body {
 	position: relative; 
 	background-color: #E3E3E3;
 	margin: 0;
+	font-family:Arial,Helvetica,sans-serif;
 }
 
 #lineOfHeader {
@@ -54,18 +55,32 @@ nav {
 	height: 45px;
 }
 
-nav ul li {
+header nav ul li {
 	display: inline-block;
 	position: relative;
 	color: #53dbd9;
 	text-align: center;
-	padding: 8px 10px;
-	width: 70px;
+	padding: 8px 20px 7px 20px;
+	margin-left: 15px;
 	cursor: pointer;
+	font-size: 16px;
+}
+
+header nav ul li:hover {
+	color: #00FFFF;
+}
+
+header nav ul li:active {
+	color: white;
+	background-color: #E3E3E3;
 }
 
 .menu-true {
 	background-color: #E3E3E3;
+	color: black;
+}
+
+.menu-true:hover {
 	color: black;
 }
 
@@ -110,9 +125,14 @@ aside section {
 }
 
 #letters span {
-margin-right: 6%;
-margin-top: 5%;
-cursor: pointer;
+	margin-right: 6%;
+	margin-top: 5%;
+	cursor: pointer;
+	display: inline-table;
+}
+
+#letters span:hover {
+	background-color: #E3E3E3;
 }
 
 #category li {
